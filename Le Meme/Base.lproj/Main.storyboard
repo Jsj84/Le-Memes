@@ -95,11 +95,11 @@
                             <size key="itemSize" width="109" height="109"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="y7u-x1-l3h" customClass="MycollectionCell" customModule="Le_Meme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109" height="109"/>
+                                <rect key="frame" x="10" y="10" width="109" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="109" height="109"/>
@@ -251,6 +251,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uTQ-yx-MZz"/>
+        <segue reference="OAD-dB-8up"/>
     </inferredMetricsTieBreakers>
 </document>
