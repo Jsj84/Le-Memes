@@ -44,13 +44,7 @@ class PictureController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         // set delegate so changes are recognized
         self.imagePicker.delegate = self
-        self.imagePicker.allowsEditing = false
-        
-    }
-    func typeChoosser(type: Bool) {
-        self.typeOfPic = type
-    }
-    override func viewWillAppear(_ animated: Bool) {
+        self.imagePicker.allowsEditing = true
         switch typeOfPic {
         case true:
             self.imagePicker.sourceType = .camera
@@ -59,6 +53,7 @@ class PictureController: UIViewController, UIImagePickerControllerDelegate, UINa
             self.imagePicker.sourceType = .photoLibrary
             present(imagePicker, animated: true, completion: nil)
         }
+        
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {

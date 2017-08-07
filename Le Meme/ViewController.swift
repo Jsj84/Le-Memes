@@ -62,6 +62,8 @@ class ViewController: UIViewController {
         sound = Bundle.main.path(forResource: "trump_wall", ofType: "mp3")
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound! ))
+            let session = AVAudioSession.sharedInstance()
+            try!  session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         }
         catch{
             print(error)

@@ -39,7 +39,7 @@ class CollectionViewController: UICollectionViewController {
     }
     func loadCustomController() {
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-        
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "SecondVC") as! PictureController
         let myPics = UIAlertAction(title: "Saved Pics", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
@@ -48,13 +48,15 @@ class CollectionViewController: UICollectionViewController {
         let choosePic = UIAlertAction(title: "Choose Picture", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            self.performSegue(withIdentifier: "fotoController", sender: self)
+            myVC.typeOfPic = false
+            self.navigationController?.pushViewController(myVC, animated: true)
         })
         
         let takePic = UIAlertAction(title: "Take Picture", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            self.performSegue(withIdentifier: "fotoController", sender: self)
+            myVC.typeOfPic = true
+             self.navigationController?.pushViewController(myVC, animated: true)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:
@@ -67,11 +69,6 @@ class CollectionViewController: UICollectionViewController {
         optionMenu.addAction(choosePic)
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "fotoController" {
-            pictureConroller.typeOfPic = false
-        }
     }
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
