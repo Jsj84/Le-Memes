@@ -7,19 +7,72 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var playButton: UIButton!
+    let defaults = UserDefaults()
+    var audioPlayer = AVAudioPlayer()
+    var sound:String? = nil
+    
+    @IBAction func faceButton(_ sender: Any) {
+        performSegue(withIdentifier: "mainSegue", sender: self)
+    }
+    @IBAction func playButton(_ sender: Any) {
+        if playButton.titleLabel?.text == "Play" {
+            audioPlayer.play()
+            playButton.backgroundColor = UIColor.red
+            playButton.setTitle("Stop", for: .normal)
+        }
+        else {
+            audioPlayer.stop()
+            playButton.backgroundColor = UIColor.green
+            playButton.setTitle("Play", for: .normal)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.backgroundColor = UIColor.black
+        
+        // design imageView box
+        self.imageView.layer.cornerRadius = 15
+        imageView.backgroundColor = UIColor.white
+        imageView.image = #imageLiteral(resourceName: "questionMark.png")
+        
+        // design buttonView box
+        playButton.backgroundColor = UIColor.green
+        playButton.setTitle("Play", for: .normal)
+        playButton.layer.cornerRadius = 70
+        
+        self.view.bringSubview(toFront: imageView)
+        self.view.bringSubview(toFront: playButton)
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if defaults.value(forKey: "image") != nil {
+            let data = defaults.object(forKey: "image") as! NSData
+            imageView.image = UIImage(data: data as Data)
+        }
+        else {
+            imageView.image = #imageLiteral(resourceName: "questionMark.png")
+        }
+        sound = Bundle.main.path(forResource: "trump_wall", ofType: "mp3")
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound! ))
+        }
+        catch{
+            print(error)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
