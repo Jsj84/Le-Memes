@@ -15,6 +15,7 @@ class CollectionViewController: UICollectionViewController {
     var image:[UIImage] = [#imageLiteral(resourceName: "trump.png"),#imageLiteral(resourceName: "kimjung.png"),#imageLiteral(resourceName: "putin.png"),#imageLiteral(resourceName: "sheen.png")]
     let maincontroller = ViewController()
     let defaults = UserDefaults()
+    let pictureConroller = PictureController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,19 +54,24 @@ class CollectionViewController: UICollectionViewController {
         let takePic = UIAlertAction(title: "Take Picture", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            print("Deleted")
+            self.performSegue(withIdentifier: "fotoController", sender: self)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            print("Cancelled")
+            
         })
         optionMenu.addAction(myPics)
         optionMenu.addAction(takePic)
         optionMenu.addAction(choosePic)
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fotoController" {
+            pictureConroller.typeOfPic = false
+        }
     }
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

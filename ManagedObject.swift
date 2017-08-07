@@ -14,9 +14,8 @@ class ManagedObject: NSObject {
     
     var context: NSManagedObjectContext
     
-    var faces: [NSManagedObject] = []
-    var face:[UIImage] = []
-    
+    var faces:[NSManagedObject] = []
+
     override init() {
         
         // This resource is the same name as your xcdatamodeld contained in your project.
@@ -76,5 +75,8 @@ class ManagedObject: NSObject {
         }
 
     }
-
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
 }

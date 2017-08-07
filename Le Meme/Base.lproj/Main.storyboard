@@ -63,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="139"/>
+            <point key="canvasLocation" x="1070" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AqT-pf-aTY">
@@ -81,7 +81,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czX-tO-zfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1070" y="-583"/>
         </scene>
         <!--My Pic View Controller-->
         <scene sceneID="7MJ-vK-3kv">
@@ -112,16 +112,19 @@
                             <outlet property="delegate" destination="tRf-gP-bGn" id="QVK-pa-177"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMyPicSegue" id="OAD-dB-8up"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frQ-5b-Og0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-669.60000000000002" y="1350.6746626686659"/>
+            <point key="canvasLocation" x="-526" y="178"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="26Y-wa-bh3">
             <objects>
                 <collectionViewController storyboardIdentifier="face" id="GC4-bI-ttU" customClass="CollectionViewController" customModule="Le_Meme" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="An4-lZ-bhH">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="An4-lZ-bhH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -154,7 +157,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qET-3L-Qgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="1306.5967016491754"/>
+            <point key="canvasLocation" x="-559" y="1109"/>
         </scene>
         <!--Picture Controller-->
         <scene sceneID="E0O-SD-2kS">
@@ -244,10 +247,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxn-wZ-31G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="931"/>
+            <point key="canvasLocation" x="1026" y="1062"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uTQ-yx-MZz"/>
+        <segue reference="OAD-dB-8up"/>
     </inferredMetricsTieBreakers>
 </document>

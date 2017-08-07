@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Le Mare needs access to your camera to allow you to take a picture in the app</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Le Meme needs to access your library, so you can upload pictures to the app</string>
 	<key>CFBundleDevelopmentRegion</key>
