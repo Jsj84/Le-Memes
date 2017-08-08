@@ -20,18 +20,10 @@ class CollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // create custom button in navigation bar
-        let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
-        btn.setTitle("Custom", for: .normal)
-        btn.setTitleColor(UIColor.blue, for: .normal)
-        btn.addTarget(self, action: #selector(self.loadCustomController), for: .touchUpInside)
-        let item1 = UIBarButtonItem(customView: btn)
-        self.navigationItem.setRightBarButtonItems([item1], animated: true)
-        
+        // programatically crate a bar buttom item...... Because I'm fucking lazy!
+        let camera = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(self.loadCustomController))
+        self.navigationItem.rightBarButtonItem = camera
         self.collectionView?.backgroundColor = UIColor.black
-        
-        // self.clearsSelectionOnViewWillAppear = false
         
         // Register cell classes
         self.collectionView!.register(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -87,7 +79,8 @@ class CollectionViewController: UICollectionViewController {
         let i = image[indexPath.row]
         let imageData:NSData = UIImagePNGRepresentation(i)! as NSData
         UserDefaults.standard.set(imageData, forKey: "image")
-        performSegue(withIdentifier: "mainSegue2", sender: self)
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "main") as! ViewController
+        self.navigationController?.pushViewController(myVC, animated: true)
     }
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //    }

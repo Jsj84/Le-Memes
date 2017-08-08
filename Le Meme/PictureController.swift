@@ -12,13 +12,14 @@ import CoreData
 
 class PictureController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var managedObject = ManagedObject()
-    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    // create class variables and constants
     var typeOfPic = Bool()
+    let imagePicker = UIImagePickerController()
+    var managedObject = ManagedObject()
     
     @IBAction func saveAction(_ sender: Any) {
         let i = imageView.image
@@ -31,13 +32,16 @@ class PictureController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBAction func cancelAction(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
     }
-    
-    let imagePicker = UIImagePickerController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // handle views and styles
         self.view.backgroundColor = UIColor.black
+        self.cancelButton.backgroundColor = UIColor.green
+        self.cancelButton.layer.cornerRadius = 10
+        self.cancelButton.setTitleColor(UIColor.red, for: .normal)
+        self.saveButton.backgroundColor = UIColor.green
+        self.saveButton.layer.cornerRadius = 10
         
         // Bring view to front
         self.view.bringSubview(toFront: imageView)

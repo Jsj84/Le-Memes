@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O8T-5B-YVb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O8T-5B-YVb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Le Meme-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Le_Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Le_Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgq-T6-02G">
-                                <rect key="frame" x="104" y="479" width="167" height="168"/>
+                                <rect key="frame" x="104" y="468" width="167" height="168"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="d1h-KL-mHB"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PTc-zh-l4t">
-                                <rect key="frame" x="48" y="49" width="278" height="278"/>
+                                <rect key="frame" x="48" y="80" width="278" height="278"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="278" id="8nd-Qz-FQC"/>
                                 </constraints>
@@ -42,28 +42,69 @@
                         <constraints>
                             <constraint firstItem="PTc-zh-l4t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J3t-JO-PIt"/>
                             <constraint firstItem="PTc-zh-l4t" firstAttribute="centerX" secondItem="mgq-T6-02G" secondAttribute="centerX" id="LlI-cb-xxQ"/>
-                            <constraint firstItem="PTc-zh-l4t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="ZFL-Vu-1Ac"/>
-                            <constraint firstAttribute="bottom" secondItem="mgq-T6-02G" secondAttribute="bottom" constant="20" symbolic="YES" id="bm1-co-0lO"/>
+                            <constraint firstItem="PTc-zh-l4t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="ZFL-Vu-1Ac"/>
+                            <constraint firstAttribute="bottom" secondItem="mgq-T6-02G" secondAttribute="bottom" constant="31" id="bm1-co-0lO"/>
                             <constraint firstItem="mgq-T6-02G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88" id="cVE-sh-S4q"/>
                             <constraint firstItem="PTc-zh-l4t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="32" id="mSq-Bi-5kp"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Le Meme" id="q6x-Mx-ryc">
                         <barButtonItem key="leftBarButtonItem" title="Faces" id="HJ1-ea-5sQ" userLabel="Faces">
                             <connections>
                                 <action selector="faceButton:" destination="BYZ-38-t0r" id="bhv-eP-7Ue"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Audio" id="WQg-9C-frD" userLabel="Audio">
+                            <connections>
+                                <action selector="voiceButton:" destination="BYZ-38-t0r" id="7ia-3U-gJY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="PTc-zh-l4t" id="kpQ-fy-Rl2"/>
                         <outlet property="playButton" destination="mgq-T6-02G" id="6Ss-uF-rhd"/>
-                        <segue destination="GC4-bI-ttU" kind="show" identifier="mainSegue" id="EI4-wW-gTX"/>
+                        <outlet property="voiceButtonOutlet" destination="WQg-9C-frD" id="Dhy-NH-Z5E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1070" y="139"/>
+        </scene>
+        <!--Audio Collection View Controller-->
+        <scene sceneID="s8r-h1-klW">
+            <objects>
+                <collectionViewController storyboardIdentifier="AudioCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Boc-fZ-Pwa" customClass="AudioCollectionViewController" customModule="Le_Meme" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dtq-CF-ZTi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h56-dC-dOb">
+                            <size key="itemSize" width="139" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1HC-Hq-0FH">
+                                <rect key="frame" x="0.0" y="0.0" width="139" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="139" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Boc-fZ-Pwa" id="80a-0g-Uis"/>
+                            <outlet property="delegate" destination="Boc-fZ-Pwa" id="9Kw-lg-I2x"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kVR-Io-8z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1950" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AqT-pf-aTY">
@@ -81,7 +122,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czX-tO-zfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="-583"/>
+            <point key="canvasLocation" x="194" y="139"/>
         </scene>
         <!--My Pic View Controller-->
         <scene sceneID="7MJ-vK-3kv">
@@ -118,7 +159,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frQ-5b-Og0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-526" y="178"/>
+            <point key="canvasLocation" x="321" y="954"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="26Y-wa-bh3">
@@ -157,7 +198,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qET-3L-Qgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559" y="1109"/>
+            <point key="canvasLocation" x="-628" y="954"/>
         </scene>
         <!--Picture Controller-->
         <scene sceneID="E0O-SD-2kS">
@@ -198,12 +239,11 @@
                         <outlet property="cancelButton" destination="vt8-7f-JtY" id="OcO-R4-VF3"/>
                         <outlet property="imageView" destination="aS7-lt-dbl" id="Eob-XT-hm1"/>
                         <outlet property="saveButton" destination="0Ae-dU-zWg" id="Ltq-6A-2RO"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToHome" id="uTQ-yx-MZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHh-FT-WBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="1307"/>
+            <point key="canvasLocation" x="-628" y="1814"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="hIq-Fi-dhf">
@@ -242,12 +282,11 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Xv1-EV-sJd" id="bGf-uO-d9L"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="main" id="NOQ-l4-cCG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxn-wZ-31G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="1062"/>
+            <point key="canvasLocation" x="321" y="1790"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

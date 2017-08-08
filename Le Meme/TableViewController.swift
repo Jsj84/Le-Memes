@@ -92,6 +92,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "main", sender: self)
+         let myVC = storyboard?.instantiateViewController(withIdentifier: "main") as! ViewController
+         self.navigationController?.pushViewController(myVC, animated: true)
     }
 }

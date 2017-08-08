@@ -11,14 +11,20 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var voiceButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     let defaults = UserDefaults()
     var audioPlayer = AVAudioPlayer()
     var sound:String? = nil
     
+    @IBAction func voiceButton(_ sender: Any) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "AudioCollectionViewController") as! AudioCollectionViewController
+        self.navigationController?.pushViewController(myVC, animated: true)
+    }
     @IBAction func faceButton(_ sender: Any) {
-        performSegue(withIdentifier: "mainSegue", sender: self)
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "face") as! CollectionViewController
+        self.navigationController?.pushViewController(myVC, animated: true)
     }
     @IBAction func playButton(_ sender: Any) {
         if playButton.titleLabel?.text == "Play" {
@@ -69,7 +75,6 @@ class ViewController: UIViewController {
             print(error)
         }
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -30,6 +30,7 @@
 		881DE4511F37D31D00886176 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4501F37D31D00886176 /* ManagedObject.swift */; };
 		881DE4541F37D78600886176 /* MyPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4531F37D78600886176 /* MyPicViewController.swift */; };
 		881DE4561F37D95300886176 /* MycollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4551F37D95300886176 /* MycollectionCell.swift */; };
+		88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */; };
 		88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D21B111F379C1E008B41EB /* TableViewController.swift */; };
 		88D21B141F37A26E008B41EB /* sheen.png in Resources */ = {isa = PBXBuildFile; fileRef = 88D21B131F37A26E008B41EB /* sheen.png */; };
 		88D21B171F37AE42008B41EB /* PictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D21B161F37AE42008B41EB /* PictureController.swift */; };
@@ -77,6 +78,7 @@
 		881DE4501F37D31D00886176 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		881DE4531F37D78600886176 /* MyPicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPicViewController.swift; sourceTree = "<group>"; };
 		881DE4551F37D95300886176 /* MycollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MycollectionCell.swift; sourceTree = "<group>"; };
+		88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		88D21B111F379C1E008B41EB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		88D21B131F37A26E008B41EB /* sheen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheen.png; sourceTree = "<group>"; };
 		88D21B161F37AE42008B41EB /* PictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				881B84201F375E34002A8FF7 /* Main View Controller */,
 				881B84221F375E84002A8FF7 /* Static Pic Controllers */,
 				88D21B101F379BEC008B41EB /* Table View contrller */,
+				88637F911F393C960089CA8F /* Audio Classes */,
 				881DE4521F37D76200886176 /* My Pics Collection View */,
 				881B840B1F375ADE002A8FF7 /* Images */,
 				881B83F11F3751A6002A8FF7 /* Le MemeTests */,
@@ -213,6 +216,14 @@
 			);
 			name = "My Pics Collection View";
 			path = "Le Meme";
+			sourceTree = "<group>";
+		};
+		88637F911F393C960089CA8F /* Audio Classes */ = {
+			isa = PBXGroup;
+			children = (
+				88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */,
+			);
+			path = "Audio Classes";
 			sourceTree = "<group>";
 		};
 		88D21B101F379BEC008B41EB /* Table View contrller */ = {
@@ -400,6 +411,7 @@
 				881DE44F1F37D28800886176 /* Model.xcdatamodeld in Sources */,
 				881DE4561F37D95300886176 /* MycollectionCell.swift in Sources */,
 				88D96F951F37748700D13885 /* CollectionViewCell.swift in Sources */,
+				88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */,
 				881DE4541F37D78600886176 /* MyPicViewController.swift in Sources */,
 				881B83DD1F3751A6002A8FF7 /* ViewController.swift in Sources */,
 				881B83DB1F3751A6002A8FF7 /* AppDelegate.swift in Sources */,

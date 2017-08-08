@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-
+//    func resizePic(width: Double, length: Double) {
+//
+//    }
 }
 
