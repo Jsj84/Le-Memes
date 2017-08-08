@@ -30,6 +30,7 @@
 		881DE4511F37D31D00886176 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4501F37D31D00886176 /* ManagedObject.swift */; };
 		881DE4541F37D78600886176 /* MyPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4531F37D78600886176 /* MyPicViewController.swift */; };
 		881DE4561F37D95300886176 /* MycollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4551F37D95300886176 /* MycollectionCell.swift */; };
+		883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B2F171F3953800017F68A /* AudioCollectionCell.swift */; };
 		88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */; };
 		88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D21B111F379C1E008B41EB /* TableViewController.swift */; };
 		88D21B141F37A26E008B41EB /* sheen.png in Resources */ = {isa = PBXBuildFile; fileRef = 88D21B131F37A26E008B41EB /* sheen.png */; };
@@ -78,6 +79,7 @@
 		881DE4501F37D31D00886176 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		881DE4531F37D78600886176 /* MyPicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPicViewController.swift; sourceTree = "<group>"; };
 		881DE4551F37D95300886176 /* MycollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MycollectionCell.swift; sourceTree = "<group>"; };
+		883B2F171F3953800017F68A /* AudioCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionCell.swift; sourceTree = "<group>"; };
 		88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		88D21B111F379C1E008B41EB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		88D21B131F37A26E008B41EB /* sheen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheen.png; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		88D96F941F37748700D13885 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		88D96F961F37758200D13885 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		88D96F991F3790BA00D13885 /* trump_wall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trump_wall.mp3; sourceTree = "<group>"; };
+		88DB80021F3968D30009B56D /* On Rosie  Truck Driver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "On Rosie  Truck Driver.mp3"; sourceTree = "<group>"; };
+		88DB80031F3968F20009B56D /* Welcome to the Boardroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Welcome to the Boardroom.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		881B83CE1F3751A6002A8FF7 = {
 			isa = PBXGroup;
 			children = (
+				88D96F981F378D7800D13885 /* Audio Files */,
 				881B83D91F3751A6002A8FF7 /* Le Meme */,
 				881B84211F375E55002A8FF7 /* Core Files */,
 				881B84201F375E34002A8FF7 /* Main View Controller */,
@@ -173,7 +178,6 @@
 				881B840D1F375B04002A8FF7 /* putin.png */,
 				88D21B131F37A26E008B41EB /* sheen.png */,
 				881B840F1F375B04002A8FF7 /* trump.png */,
-				88D96F981F378D7800D13885 /* Audio Files */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -222,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */,
+				883B2F171F3953800017F68A /* AudioCollectionCell.swift */,
 			);
 			path = "Audio Classes";
 			sourceTree = "<group>";
@@ -247,6 +252,8 @@
 		88D96F981F378D7800D13885 /* Audio Files */ = {
 			isa = PBXGroup;
 			children = (
+				88DB80021F3968D30009B56D /* On Rosie  Truck Driver.mp3 */,
+				88DB80031F3968F20009B56D /* Welcome to the Boardroom.mp3 */,
 				88D96F991F3790BA00D13885 /* trump_wall.mp3 */,
 			);
 			name = "Audio Files";
@@ -414,6 +421,7 @@
 				88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */,
 				881DE4541F37D78600886176 /* MyPicViewController.swift in Sources */,
 				881B83DD1F3751A6002A8FF7 /* ViewController.swift in Sources */,
+				883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */,
 				881B83DB1F3751A6002A8FF7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
