@@ -17,15 +17,21 @@ class AudioCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         select = UIButton(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width / 0.70, height: self.bounds.size.height))
-        select.setTitle("T1", for: .normal)
-        select.backgroundColor = UIColor.red
+        select.setImage(#imageLiteral(resourceName: "select"), for: .normal)
+        select.contentEdgeInsets.top = 5
+        select.contentEdgeInsets.bottom = 5
+        select.contentEdgeInsets.left = 5
+        select.contentEdgeInsets.right = 15
+ 
         
         playButton = UIButton(frame: CGRect(x: select.bounds.maxX + 2, y: 0, width: (self.bounds.width - select.bounds.width) - 4, height: self.bounds.size.height))
-        playButton.setTitle("T2", for: .normal)
-        playButton.backgroundColor = UIColor.brown
+        playButton.setImage(#imageLiteral(resourceName: "playPic"), for: .normal)
+        playButton.contentEdgeInsets.right = 5
+        playButton.contentEdgeInsets.top = 5
+        playButton.contentEdgeInsets.bottom = 5
 
-        self.backgroundColor = UIColor.green
-        self.layer.cornerRadius = 8
+        
+        self.backgroundColor = UIColor.black
         contentView.addSubview(select)
         contentView.addSubview(playButton)
         

@@ -12,7 +12,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    let sectionTrump:[String] = ["Great Big Wall", "test"]
+    let sectionTrump:[String] = ["Great Big Wall", "Rosie", "Boardroom"]
     let sectionKim:[String] = ["Nuclear Attack", "test"]
     let sectionPutin:[String] = ["Computer Hack", "test", "test2"]
     let sectionSheen:[String] = ["Sheenous", "10 pound Rock", "I'm a rockstar"]
@@ -28,14 +28,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        // self.clearsSelectionOnViewWillAppear = false
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    // MARK: - Table view data source
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 4
     }
     
@@ -92,7 +87,23 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let myVC = storyboard?.instantiateViewController(withIdentifier: "main") as! ViewController
-         self.navigationController?.pushViewController(myVC, animated: true)
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "main") as! ViewController
+        if indexPath.section == 0 && indexPath.row == 0 {
+            myVC.chosenSound = "trump_wall"
+            self.navigationController?.pushViewController(myVC, animated: true)
+        }
+        else if indexPath.section == 0 && indexPath.row == 1 {
+            myVC.chosenSound = "rosie"
+            self.navigationController?.pushViewController(myVC, animated: true)
+        }
+        else if indexPath.section == 0 && indexPath.row == 2 {
+            myVC.chosenSound = "boardroom"
+            self.navigationController?.pushViewController(myVC, animated: true)
+        }
+        else {
+            myVC.chosenSound = "trump_wall"
+            self.navigationController?.pushViewController(myVC, animated: true)
+        }
+        
     }
 }

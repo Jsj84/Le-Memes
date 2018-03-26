@@ -7,18 +7,25 @@
 //
 
 import UIKit
-
+import Foundation
 private let reuseIdentifier = "cell"
 
-class CollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var image:[UIImage] = [#imageLiteral(resourceName: "trump.png"),#imageLiteral(resourceName: "kimjung.png"),#imageLiteral(resourceName: "putin.png"),#imageLiteral(resourceName: "sheen.png")]
     let maincontroller = ViewController()
     let defaults = UserDefaults()
     let pictureConroller = PictureController()
+    let imagePicker = UIImagePickerController()
+    var img = UIImage()
+    let managedObject = ManagedObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set delegate so changes are recognized
+        self.imagePicker.delegate = self 
+        self.imagePicker.allowsEditing = true
         
         // programatically crate a bar buttom item...... Because I'm fucking lazy!
         let camera = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(self.loadCustomController))
@@ -29,26 +36,30 @@ class CollectionViewController: UICollectionViewController {
         self.collectionView!.register(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
     }
-    func loadCustomController() {
+    override func viewWillAppear(_ animated: Bool) {
+        managedObject.getFaces()
+        for i in 0..<managedObject.faces.count {
+            let data = self.managedObject.faces[i].value(forKey: "imageData") as! Data
+            image.append(UIImage(data: data)!)
+        }
+    }
+    @objc func loadCustomController() {
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "SecondVC") as! PictureController
-        let myPics = UIAlertAction(title: "Saved Pics", style: .default, handler:
-        {
-            (alert: UIAlertAction!) -> Void in
-            self.performSegue(withIdentifier: "myPics", sender: self)
-        })
+
         let choosePic = UIAlertAction(title: "Choose Picture", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            myVC.typeOfPic = false
-            self.navigationController?.pushViewController(myVC, animated: true)
+            
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+            
         })
         
         let takePic = UIAlertAction(title: "Take Picture", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            myVC.typeOfPic = true
-             self.navigationController?.pushViewController(myVC, animated: true)
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:
@@ -56,7 +67,6 @@ class CollectionViewController: UICollectionViewController {
             (alert: UIAlertAction!) -> Void in
             
         })
-        optionMenu.addAction(myPics)
         optionMenu.addAction(takePic)
         optionMenu.addAction(choosePic)
         optionMenu.addAction(cancelAction)
@@ -79,13 +89,24 @@ class CollectionViewController: UICollectionViewController {
         let i = image[indexPath.row]
         let imageData:NSData = UIImagePNGRepresentation(i)! as NSData
         UserDefaults.standard.set(imageData, forKey: "image")
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "main") as! ViewController
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "tableView") as! TableViewController
         self.navigationController?.pushViewController(myVC, animated: true)
     }
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fotoController" {
+            let destination = segue.destination as! PictureController
+              destination.tempImage = img
+        }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.img = pickedImage
+        }
+        performSegue(withIdentifier: "fotoController", sender: self)
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

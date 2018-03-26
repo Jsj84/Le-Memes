@@ -28,8 +28,6 @@
 		881B841F1F375C4A002A8FF7 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 881B841C1F375C4A002A8FF7 /* questionMark.png */; };
 		881DE44F1F37D28800886176 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 881DE44D1F37D28800886176 /* Model.xcdatamodeld */; };
 		881DE4511F37D31D00886176 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4501F37D31D00886176 /* ManagedObject.swift */; };
-		881DE4541F37D78600886176 /* MyPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4531F37D78600886176 /* MyPicViewController.swift */; };
-		881DE4561F37D95300886176 /* MycollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4551F37D95300886176 /* MycollectionCell.swift */; };
 		883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B2F171F3953800017F68A /* AudioCollectionCell.swift */; };
 		88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */; };
 		88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D21B111F379C1E008B41EB /* TableViewController.swift */; };
@@ -77,8 +75,6 @@
 		881B841C1F375C4A002A8FF7 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
 		881DE44E1F37D28800886176 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		881DE4501F37D31D00886176 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
-		881DE4531F37D78600886176 /* MyPicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPicViewController.swift; sourceTree = "<group>"; };
-		881DE4551F37D95300886176 /* MycollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MycollectionCell.swift; sourceTree = "<group>"; };
 		883B2F171F3953800017F68A /* AudioCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionCell.swift; sourceTree = "<group>"; };
 		88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		88D21B111F379C1E008B41EB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -87,8 +83,6 @@
 		88D96F941F37748700D13885 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		88D96F961F37758200D13885 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		88D96F991F3790BA00D13885 /* trump_wall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trump_wall.mp3; sourceTree = "<group>"; };
-		88DB80021F3968D30009B56D /* On Rosie  Truck Driver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "On Rosie  Truck Driver.mp3"; sourceTree = "<group>"; };
-		88DB80031F3968F20009B56D /* Welcome to the Boardroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Welcome to the Boardroom.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +117,9 @@
 				881B83D91F3751A6002A8FF7 /* Le Meme */,
 				881B84211F375E55002A8FF7 /* Core Files */,
 				881B84201F375E34002A8FF7 /* Main View Controller */,
-				881B84221F375E84002A8FF7 /* Static Pic Controllers */,
+				881B84221F375E84002A8FF7 /* Picture Holder */,
 				88D21B101F379BEC008B41EB /* Table View contrller */,
 				88637F911F393C960089CA8F /* Audio Classes */,
-				881DE4521F37D76200886176 /* My Pics Collection View */,
 				881B840B1F375ADE002A8FF7 /* Images */,
 				881B83F11F3751A6002A8FF7 /* Le MemeTests */,
 				881B83FC1F3751A6002A8FF7 /* Le MemeUITests */,
@@ -203,23 +196,13 @@
 			name = "Core Files";
 			sourceTree = "<group>";
 		};
-		881B84221F375E84002A8FF7 /* Static Pic Controllers */ = {
+		881B84221F375E84002A8FF7 /* Picture Holder */ = {
 			isa = PBXGroup;
 			children = (
 				88D96F941F37748700D13885 /* CollectionViewCell.swift */,
 				88D96F961F37758200D13885 /* CollectionViewController.swift */,
 			);
-			name = "Static Pic Controllers";
-			sourceTree = "<group>";
-		};
-		881DE4521F37D76200886176 /* My Pics Collection View */ = {
-			isa = PBXGroup;
-			children = (
-				881DE4531F37D78600886176 /* MyPicViewController.swift */,
-				881DE4551F37D95300886176 /* MycollectionCell.swift */,
-			);
-			name = "My Pics Collection View";
-			path = "Le Meme";
+			name = "Picture Holder";
 			sourceTree = "<group>";
 		};
 		88637F911F393C960089CA8F /* Audio Classes */ = {
@@ -252,8 +235,6 @@
 		88D96F981F378D7800D13885 /* Audio Files */ = {
 			isa = PBXGroup;
 			children = (
-				88DB80021F3968D30009B56D /* On Rosie  Truck Driver.mp3 */,
-				88DB80031F3968F20009B56D /* Welcome to the Boardroom.mp3 */,
 				88D96F991F3790BA00D13885 /* trump_wall.mp3 */,
 			);
 			name = "Audio Files";
@@ -323,23 +304,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Jesse;
 				TargetAttributes = {
 					881B83D61F3751A6002A8FF7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = JN83A35T6F;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					881B83ED1F3751A6002A8FF7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = JN83A35T6F;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 881B83D61F3751A6002A8FF7;
 					};
 					881B83F81F3751A6002A8FF7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = JN83A35T6F;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 881B83D61F3751A6002A8FF7;
 					};
@@ -416,10 +400,8 @@
 				881DE4511F37D31D00886176 /* ManagedObject.swift in Sources */,
 				88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */,
 				881DE44F1F37D28800886176 /* Model.xcdatamodeld in Sources */,
-				881DE4561F37D95300886176 /* MycollectionCell.swift in Sources */,
 				88D96F951F37748700D13885 /* CollectionViewCell.swift in Sources */,
 				88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */,
-				881DE4541F37D78600886176 /* MyPicViewController.swift in Sources */,
 				881B83DD1F3751A6002A8FF7 /* ViewController.swift in Sources */,
 				883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */,
 				881B83DB1F3751A6002A8FF7 /* AppDelegate.swift in Sources */,
@@ -489,7 +471,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -497,7 +481,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -540,7 +528,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -548,7 +538,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -584,7 +578,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-Meme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -598,7 +593,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-Meme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -612,7 +608,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-MemeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Le Meme.app/Le Meme";
 			};
 			name = Debug;
@@ -627,7 +624,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-MemeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Le Meme.app/Le Meme";
 			};
 			name = Release;
@@ -641,7 +639,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-MemeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Le Meme";
 			};
 			name = Debug;
@@ -655,7 +654,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-MemeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Le Meme";
 			};
 			name = Release;

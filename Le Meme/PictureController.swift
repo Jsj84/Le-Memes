@@ -10,64 +10,54 @@ import Foundation
 import UIKit
 import CoreData
 
-class PictureController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PictureController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    
-    // create class variables and constants
-    var typeOfPic = Bool()
-    let imagePicker = UIImagePickerController()
     var managedObject = ManagedObject()
+    var tempImage = UIImage()
     
-    @IBAction func saveAction(_ sender: Any) {
-        let i = imageView.image
-        let imageData:NSData = UIImagePNGRepresentation(i!)! as NSData
-        UserDefaults.standard.set(imageData, forKey: "image")
-        managedObject.save(face: imageData)
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @IBAction func cancelAction(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.isNavigationBarHidden = false
+        
+        let cancel = UIButton()
+        cancel.setTitle("Cancel", for: .normal)
+        cancel.setTitleColor(UIColor.red, for: .normal)
+        cancel.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        cancel.addTarget(self, action: #selector(cancelAct), for: .touchUpInside)
+        let item1 = UIBarButtonItem()
+        item1.customView = cancel
+        
+        let save = UIButton()
+        save.setTitle("Save", for: .normal)
+        save.setTitleColor(UIColor.blue, for: .normal)
+        save.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        save.addTarget(self, action: #selector(saveAct), for: .touchUpInside)
+        let item2 = UIBarButtonItem()
+        item2.customView = save
+        
+        self.navigationItem.rightBarButtonItems = [item2, item1]
+        
         // handle views and styles
         self.view.backgroundColor = UIColor.black
-        self.cancelButton.backgroundColor = UIColor.green
-        self.cancelButton.layer.cornerRadius = 10
-        self.cancelButton.setTitleColor(UIColor.red, for: .normal)
-        self.saveButton.backgroundColor = UIColor.green
-        self.saveButton.layer.cornerRadius = 10
         
         // Bring view to front
         self.view.bringSubview(toFront: imageView)
         
-        // set delegate so changes are recognized
-        self.imagePicker.delegate = self
-        self.imagePicker.allowsEditing = true
-        switch typeOfPic {
-        case true:
-            self.imagePicker.sourceType = .camera
-            present(imagePicker, animated: true, completion: nil)
-        default:
-            self.imagePicker.sourceType = .photoLibrary
-            present(imagePicker, animated: true, completion: nil)
-        }
-        
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
+    @objc func cancelAct() {
+        navigationController?.popToRootViewController(animated: true)
     }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+    @objc func saveAct() {
+        let imageData:NSData = UIImageJPEGRepresentation(imageView.image!, 100)! as NSData
+        UserDefaults.standard.set(imageData, forKey: "image")
+        managedObject.save(face: imageData)
+        navigationController?.popToRootViewController(animated: true)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.imageView.image = tempImage
+    }
+    
 }
