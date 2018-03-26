@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 private let reuseIdentifier = "cell"
 
-class CollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     var image:[UIImage] = [#imageLiteral(resourceName: "trump.png"),#imageLiteral(resourceName: "kimjung.png"),#imageLiteral(resourceName: "putin.png"),#imageLiteral(resourceName: "sheen.png")]
     let maincontroller = ViewController()
@@ -22,6 +22,12 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let lpgr : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delegate = self
+        lpgr.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(lpgr)
         
         // set delegate so changes are recognized
         self.imagePicker.delegate = self 
@@ -82,6 +88,8 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
+        cell.imageView.contentMode = .scaleToFill
+        cell.imageView.clipsToBounds = true
         cell.imageView.image = image[indexPath.row]
         return cell
     }
@@ -92,12 +100,21 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         let myVC = storyboard?.instantiateViewController(withIdentifier: "tableView") as! TableViewController
         self.navigationController?.pushViewController(myVC, animated: true)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "fotoController" {
-            let destination = segue.destination as! PictureController
-              destination.tempImage = img
+    @objc func handleLongPress(gestureRecognizer : UILongPressGestureRecognizer) {
+        
+        for cell in (collectionView?.visibleCells)! {
+            let customCell: CollectionViewCell = cell as! CollectionViewCell
+            customCell.wobble()
         }
+        if (gestureRecognizer.state != UIGestureRecognizerState.ended){
+            return
+        }
+        let p = gestureRecognizer.location(in: collectionView)
+        
+        if let index = self.collectionView?.indexPathForItem(at: p) {
+            print(index)
+        }
+        
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -106,7 +123,14 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         performSegue(withIdentifier: "fotoController", sender: self)
         dismiss(animated: true, completion: nil)
     }
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fotoController" {
+            let destination = segue.destination as! PictureController
+            destination.tempImage = img
+        }
     }
 }
