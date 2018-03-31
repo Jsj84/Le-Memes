@@ -101,17 +101,14 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         self.navigationController?.pushViewController(myVC, animated: true)
     }
     @objc func handleLongPress(gestureRecognizer : UILongPressGestureRecognizer) {
-        
-        for cell in (collectionView?.visibleCells)! {
-            let customCell: CollectionViewCell = cell as! CollectionViewCell
-            customCell.wobble()
-        }
+
         if (gestureRecognizer.state != UIGestureRecognizerState.ended){
             return
         }
         let p = gestureRecognizer.location(in: collectionView)
         
         if let index = self.collectionView?.indexPathForItem(at: p) {
+         collectionView?.cellForItem(at: index)?.isSelected = true
             print(index)
         }
         

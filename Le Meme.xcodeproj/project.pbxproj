@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880A14A9206EA7E1008330AF /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880A14A8206EA7E1008330AF /* PlayerViewController.swift */; };
 		881B83DB1F3751A6002A8FF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B83DA1F3751A6002A8FF7 /* AppDelegate.swift */; };
 		881B83DD1F3751A6002A8FF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B83DC1F3751A6002A8FF7 /* ViewController.swift */; };
 		881B83E01F3751A6002A8FF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881B83DE1F3751A6002A8FF7 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		880A14A8206EA7E1008330AF /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		881B83D71F3751A6002A8FF7 /* Le Meme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Meme.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		881B83DA1F3751A6002A8FF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Le Meme/AppDelegate.swift"; sourceTree = "<group>"; };
 		881B83DC1F3751A6002A8FF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Le Meme/ViewController.swift"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */,
 				883B2F171F3953800017F68A /* AudioCollectionCell.swift */,
+				880A14A8206EA7E1008330AF /* PlayerViewController.swift */,
 			);
 			path = "Audio Classes";
 			sourceTree = "<group>";
@@ -304,7 +307,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Jesse;
 				TargetAttributes = {
 					881B83D61F3751A6002A8FF7 = {
@@ -401,6 +404,7 @@
 				88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */,
 				881DE44F1F37D28800886176 /* Model.xcdatamodeld in Sources */,
 				88D96F951F37748700D13885 /* CollectionViewCell.swift in Sources */,
+				880A14A9206EA7E1008330AF /* PlayerViewController.swift in Sources */,
 				88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */,
 				881B83DD1F3751A6002A8FF7 /* ViewController.swift in Sources */,
 				883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */,
@@ -475,6 +479,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -482,6 +487,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -532,6 +538,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -539,6 +546,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -574,7 +582,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JN83A35T6F;
 				INFOPLIST_FILE = "Le Meme/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-Meme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -589,7 +597,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JN83A35T6F;
 				INFOPLIST_FILE = "Le Meme/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JNJ-APPS.Le-Meme";
 				PRODUCT_NAME = "$(TARGET_NAME)";

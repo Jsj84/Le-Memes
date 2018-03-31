@@ -13,13 +13,14 @@ import Foundation
 class ManagedObject: NSObject {
     
     var faces:[NSManagedObject] = []
+    var voices:[NSManagedObject] = []
 
     func save(face: NSData) {
         
         let entity = NSEntityDescription.entity(forEntityName: "Faces", in: getContext ())!
         let object = NSManagedObject(entity: entity, insertInto: getContext ())
         
-        object.setValue(face, forKeyPath: "imageData")
+        object.setValue(face, forKey: "imageData")
         
         do {
             try getContext ().save()
@@ -49,6 +50,42 @@ class ManagedObject: NSObject {
             faces.remove(at: index)
         }
         catch{print(" Sorry Jesse, had and error deleting. The error is: \(error)")}
+    }
+    func saveVoice(voice: Data, index: Int) {
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Voices", in: getContext ())!
+        let object = NSManagedObject(entity: entity, insertInto: getContext())
+        
+        object.setValue(voice, forKey: "voiceRecording")
+        object.setValue(index, forKey: "index")
+        
+        do {
+            try getContext ().save()
+            getVoices()
+            print("your query has been saved")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    func getVoices() {
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Voices")
+        
+        do {
+            voices = try getContext ().fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+    func deleteVoice(index: Int) {
+        getVoices()
+        getContext().delete(voices[index])
+        do {
+            try getContext().save()
+            voices.remove(at: index)
+       }
+    catch{print(" Sorry Jesse, had and error deleting. The error is: \(error)")}
     }
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

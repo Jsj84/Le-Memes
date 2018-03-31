@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+  
         self.view.backgroundColor = UIColor.black
         
         // design imageView box
@@ -59,6 +60,7 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+
         if defaults.value(forKey: "image") != nil {
             let data = defaults.object(forKey: "image") as! NSData
             imageView.image = UIImage(data: data as Data)
