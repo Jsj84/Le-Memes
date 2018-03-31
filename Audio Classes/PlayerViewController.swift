@@ -41,7 +41,7 @@ class PlayerViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
                     if allowed {
-                        self.loadRecordingUI()
+                        self.recordButton.setTitle("Tap to Record", for: .normal)
                     } else {
                         // failed to record!
                     }
@@ -56,23 +56,6 @@ class PlayerViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
-    }
-    func loadRecordingUI() {
-        recordButton.setTitle("Tap to Record", for: .normal)
-        
-    }
-    func preparePlayer(i: Int) {
-        do {
-            let file = managedObject.voices[i].value(forKey: "voiceRecording") as! Data
-            audioPlayer = try AVAudioPlayer(data: file)
-            audioPlayer.delegate = self
-            audioPlayer.play()
-        } catch{
-            if let err = error as Error? {
-                print("AVAudioPlayer error: \(err.localizedDescription)")
-                audioPlayer = nil
-            }
-        }
     }
     func startRecording() {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
@@ -105,7 +88,6 @@ class PlayerViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             do {
             let audioData =  try Data(contentsOf: audioRecorder.url)
                 managedObject.saveVoice(voice: audioData, index: key)
-                preparePlayer(i: key)
                 key = key + 1
                 defaults.set(key, forKey: "voiceIndexCounter")
             } catch{

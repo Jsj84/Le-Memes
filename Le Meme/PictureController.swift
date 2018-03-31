@@ -8,16 +8,21 @@
 
 import Foundation
 import UIKit
-import CoreData
+
 
 class PictureController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     var managedObject = ManagedObject()
     var tempImage = UIImage()
+    let defaults = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        self.imageView.clipsToBounds = true
+        self.imageView.layer.borderWidth = 2
+        self.imageView.layer.borderColor = UIColor.black.cgColor
         
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.isNavigationBarHidden = false
@@ -40,11 +45,7 @@ class PictureController: UIViewController {
         
         self.navigationItem.rightBarButtonItems = [item2, item1]
         
-        // handle views and styles
         self.view.backgroundColor = UIColor.black
-        
-        // Bring view to front
-        self.view.bringSubview(toFront: imageView)
         
     }
     @objc func cancelAct() {
@@ -52,12 +53,37 @@ class PictureController: UIViewController {
     }
     @objc func saveAct() {
         let imageData:NSData = UIImageJPEGRepresentation(imageView.image!, 100)! as NSData
-        UserDefaults.standard.set(imageData, forKey: "image")
+        defaults.set(imageData, forKey: "image")
         managedObject.save(face: imageData)
         navigationController?.popToRootViewController(animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.imageView.image = tempImage
+        self.imageView.image = tempImage.resizedImageWithinRect(rectSize: CGSize(width: tempImage.size.width, height: tempImage.size.width))
+    }
+}
+extension UIImage {
+    func resizedImage(newSize: CGSize) -> UIImage {
+        // Guard newSize is different
+        guard self.size != newSize else { return self }
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
+    func resizedImageWithinRect(rectSize: CGSize) -> UIImage {
+        let widthFactor = size.width / rectSize.width
+        let heightFactor = size.height / rectSize.height
+        
+        var resizeFactor = widthFactor
+        if size.height > size.width {
+            resizeFactor = heightFactor
+        }
+        
+        let newSize = CGSize(width: size.width/resizeFactor, height: size.height/resizeFactor)
+        let resized = resizedImage(newSize: newSize)
+        return resized
+    }
 }

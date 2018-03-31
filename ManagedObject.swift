@@ -57,7 +57,7 @@ class ManagedObject: NSObject {
         let object = NSManagedObject(entity: entity, insertInto: getContext())
         
         object.setValue(voice, forKey: "voiceRecording")
-        object.setValue(index, forKey: "index")
+        object.setValue(index, forKey: "id")
         
         do {
             try getContext ().save()

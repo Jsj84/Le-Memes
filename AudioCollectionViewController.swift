@@ -17,6 +17,7 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
     var audioPlayer: AVAudioPlayer!
     var session: AVAudioSession!
     var settings = [String : Int]()
+    let defaults = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,23 +60,27 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AudioCollectionCell
-        cell.lable.text = "\(managedObject.voices[indexPath.item].value(forKey: "index") as! Int)"
+        cell.lable.text = "\(managedObject.voices[indexPath.item].value(forKey: "id") as! Int)"
             return cell
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         managedObject.getVoices()
         preparePlayer(i: indexPath.item)
+        defaults.set(indexPath.item, forKey: "tempIndexPath")
+        audioPlayer.play()
     }
     @objc func gotToNextView() {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
         self.navigationController?.pushViewController(myVC, animated: true)
+    }
+    @objc func previewButton(index: Int) {
+      preparePlayer(i: index)
     }
     func preparePlayer(i: Int) {
         do {
             let file = managedObject.voices[i].value(forKey: "voiceRecording") as! Data
             audioPlayer = try AVAudioPlayer(data: file)
             audioPlayer.delegate = self
-            audioPlayer.play()
         } catch{
             if let err = error as Error? {
                 print("AVAudioPlayer error: \(err.localizedDescription)")
