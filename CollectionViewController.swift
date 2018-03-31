@@ -94,11 +94,10 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let i = image[indexPath.row]
+        let i = image[indexPath.item]
         let imageData:NSData = UIImagePNGRepresentation(i)! as NSData
         UserDefaults.standard.set(imageData, forKey: "image")
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "tableView") as! TableViewController
-        self.navigationController?.pushViewController(myVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func handleLongPress(gestureRecognizer : UILongPressGestureRecognizer) {
 

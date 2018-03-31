@@ -79,11 +79,11 @@ class ManagedObject: NSObject {
         
     }
     func deleteVoice(index: Int) {
-        getVoices()
         getContext().delete(voices[index])
         do {
             try getContext().save()
             voices.remove(at: index)
+                getVoices()
        }
     catch{print(" Sorry Jesse, had and error deleting. The error is: \(error)")}
     }

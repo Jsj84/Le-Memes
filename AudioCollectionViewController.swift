@@ -21,6 +21,8 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        managedObject.getVoices()
+        collectionView?.delegate = self
         
         let voice = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(gotToNextView))
         self.navigationItem.rightBarButtonItem = voice
@@ -35,12 +37,12 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
         do {
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
             try session.setActive(true)
-        settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
-            AVNumberOfChannelsKey: 1,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-        ]
+            settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000,
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
         } catch {
             
         }
@@ -60,27 +62,37 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AudioCollectionCell
-        cell.lable.text = "\(managedObject.voices[indexPath.item].value(forKey: "id") as! Int)"
-            return cell
+        cell.deleteButton.tag = indexPath.item
+        cell.button.tag = indexPath.item
+        cell.useButton.tag = indexPath.item
+        cell.deleteButton?.addTarget(self, action: #selector(self.deleteButton), for: UIControlEvents.touchUpInside)
+        cell.button?.addTarget(self, action: #selector(self.previewButton), for: UIControlEvents.touchUpInside)
+        cell.useButton?.addTarget(self, action: #selector(self.useButton), for: UIControlEvents.touchUpInside)
+        return cell
     }
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        managedObject.getVoices()
-        preparePlayer(i: indexPath.item)
-        defaults.set(indexPath.item, forKey: "tempIndexPath")
-        audioPlayer.play()
-    }
+    
     @objc func gotToNextView() {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
         self.navigationController?.pushViewController(myVC, animated: true)
     }
-    @objc func previewButton(index: Int) {
-      preparePlayer(i: index)
+    @objc func previewButton(sender: UIButton) {
+        preparePlayer(i: sender.tag)
+    }
+    @objc func useButton(sender: UIButton) {
+        defaults.set(sender.tag, forKey: "voiceRecording")
+        self.navigationController?.popViewController(animated: true)
+    }
+    @objc func deleteButton(sender: UIButton) {
+        managedObject.deleteVoice(index: sender.tag)
+        self.collectionView?.reloadData()
+        self.view.reloadInputViews()
     }
     func preparePlayer(i: Int) {
         do {
             let file = managedObject.voices[i].value(forKey: "voiceRecording") as! Data
             audioPlayer = try AVAudioPlayer(data: file)
             audioPlayer.delegate = self
+            audioPlayer.play()
         } catch{
             if let err = error as Error? {
                 print("AVAudioPlayer error: \(err.localizedDescription)")

@@ -11,28 +11,36 @@ import UIKit
 
 class AudioCollectionCell: UICollectionViewCell {
     
-       var button = UIButton()
-       var lable = UILabel()
-    let colectView = AudioCollectionViewController()
+    var button: UIButton!
+    var useButton: UIButton!
+    var deleteButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.red.cgColor
-          self.backgroundColor = UIColor.black
+        self.backgroundColor = UIColor.black
         
-      lable = UILabel(frame: CGRect(x: 5, y: 5, width: self.bounds.width - 5, height: 20))
-        lable.textColor = UIColor.white
+        deleteButton = UIButton(frame: CGRect(x: self.bounds.maxX - 30, y: 5, width: 25, height: 25))
+        deleteButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
         
-        button = UIButton(frame: CGRect(x: 5, y: 30, width: self.bounds.width - 10, height: (self.bounds.height / 1) - 35))
+        button = UIButton(frame: CGRect(x: 5, y: 35, width: self.bounds.width - 10, height: 65))
         button.setTitle("Listen", for: .normal)
         button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.white.cgColor
         button.setTitleColor(UIColor.white, for: .normal)
         
+        useButton = UIButton(frame: CGRect(x: 5, y: button.bounds.maxY + 40, width: self.bounds.width - 10, height: 35))
+        useButton.setTitle("Use", for: .normal)
+        useButton.backgroundColor = UIColor.green
+        useButton.layer.borderWidth = 1
+        useButton.layer.borderColor = UIColor.white.cgColor
+        useButton.layer.cornerRadius = 5
+        useButton.setTitleColor(UIColor.white, for: .normal)
         
-       contentView.addSubview(lable)
+        
+        contentView.addSubview(deleteButton)
         contentView.addSubview(button)
+        contentView.addSubview(useButton)
         
     }
     

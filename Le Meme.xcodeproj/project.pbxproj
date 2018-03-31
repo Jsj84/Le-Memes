@@ -31,9 +31,8 @@
 		881DE4511F37D31D00886176 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881DE4501F37D31D00886176 /* ManagedObject.swift */; };
 		883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B2F171F3953800017F68A /* AudioCollectionCell.swift */; };
 		88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */; };
-		88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D21B111F379C1E008B41EB /* TableViewController.swift */; };
+		88955440206FB9BE0001B7BC /* PictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895543F206FB9BE0001B7BC /* PictureController.swift */; };
 		88D21B141F37A26E008B41EB /* sheen.png in Resources */ = {isa = PBXBuildFile; fileRef = 88D21B131F37A26E008B41EB /* sheen.png */; };
-		88D21B171F37AE42008B41EB /* PictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D21B161F37AE42008B41EB /* PictureController.swift */; };
 		88D96F951F37748700D13885 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D96F941F37748700D13885 /* CollectionViewCell.swift */; };
 		88D96F971F37758200D13885 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D96F961F37758200D13885 /* CollectionViewController.swift */; };
 		88D96F9A1F3790BA00D13885 /* trump_wall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 88D96F991F3790BA00D13885 /* trump_wall.mp3 */; };
@@ -79,9 +78,8 @@
 		881DE4501F37D31D00886176 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		883B2F171F3953800017F68A /* AudioCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionCell.swift; sourceTree = "<group>"; };
 		88637F921F393CD20089CA8F /* AudioCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
-		88D21B111F379C1E008B41EB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8895543F206FB9BE0001B7BC /* PictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureController.swift; sourceTree = "<group>"; };
 		88D21B131F37A26E008B41EB /* sheen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheen.png; sourceTree = "<group>"; };
-		88D21B161F37AE42008B41EB /* PictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureController.swift; sourceTree = "<group>"; };
 		88D96F941F37748700D13885 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		88D96F961F37758200D13885 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		88D96F991F3790BA00D13885 /* trump_wall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trump_wall.mp3; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				881B84211F375E55002A8FF7 /* Core Files */,
 				881B84201F375E34002A8FF7 /* Main View Controller */,
 				881B84221F375E84002A8FF7 /* Picture Holder */,
-				88D21B101F379BEC008B41EB /* Table View contrller */,
 				88637F911F393C960089CA8F /* Audio Classes */,
 				881B840B1F375ADE002A8FF7 /* Images */,
 				881B83F11F3751A6002A8FF7 /* Le MemeTests */,
@@ -201,6 +198,7 @@
 		881B84221F375E84002A8FF7 /* Picture Holder */ = {
 			isa = PBXGroup;
 			children = (
+				8895543F206FB9BE0001B7BC /* PictureController.swift */,
 				88D96F941F37748700D13885 /* CollectionViewCell.swift */,
 				88D96F961F37758200D13885 /* CollectionViewController.swift */,
 			);
@@ -215,24 +213,6 @@
 				880A14A8206EA7E1008330AF /* PlayerViewController.swift */,
 			);
 			path = "Audio Classes";
-			sourceTree = "<group>";
-		};
-		88D21B101F379BEC008B41EB /* Table View contrller */ = {
-			isa = PBXGroup;
-			children = (
-				88D21B111F379C1E008B41EB /* TableViewController.swift */,
-				88D21B151F37AE22008B41EB /* Foto Controllers */,
-			);
-			name = "Table View contrller";
-			path = "Le Meme";
-			sourceTree = "<group>";
-		};
-		88D21B151F37AE22008B41EB /* Foto Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				88D21B161F37AE42008B41EB /* PictureController.swift */,
-			);
-			name = "Foto Controllers";
 			sourceTree = "<group>";
 		};
 		88D96F981F378D7800D13885 /* Audio Files */ = {
@@ -399,15 +379,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				88D96F971F37758200D13885 /* CollectionViewController.swift in Sources */,
-				88D21B171F37AE42008B41EB /* PictureController.swift in Sources */,
 				881DE4511F37D31D00886176 /* ManagedObject.swift in Sources */,
-				88D21B121F379C1E008B41EB /* TableViewController.swift in Sources */,
 				881DE44F1F37D28800886176 /* Model.xcdatamodeld in Sources */,
 				88D96F951F37748700D13885 /* CollectionViewCell.swift in Sources */,
 				880A14A9206EA7E1008330AF /* PlayerViewController.swift in Sources */,
 				88637F931F393CD20089CA8F /* AudioCollectionViewController.swift in Sources */,
 				881B83DD1F3751A6002A8FF7 /* ViewController.swift in Sources */,
 				883B2F181F3953800017F68A /* AudioCollectionCell.swift in Sources */,
+				88955440206FB9BE0001B7BC /* PictureController.swift in Sources */,
 				881B83DB1F3751A6002A8FF7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,9 +32,30 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     @IBAction func playButton(_ sender: Any) {
         if playButton.titleLabel?.text == "Play" {
-            audioPlayer.play()
-            playButton.backgroundColor = UIColor.red
-            playButton.setTitle("Stop", for: .normal)
+            if defaults.value(forKey: "voiceRecording") == nil {
+                sound = Bundle.main.path(forResource: "trump_wall", ofType: "mp3")!
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+                }
+                catch {
+                    print(error)
+                }
+            }
+            else {
+                do {
+                    playButton.backgroundColor = UIColor.red
+                    playButton.setTitle("Stop", for: .normal)
+                    let i = defaults.value(forKey: "voiceRecording") as! Int
+                    let file = managedObject.voices[i].value(forKey: "voiceRecording") as! Data
+                    audioPlayer = try AVAudioPlayer(data: file)
+                    audioPlayer.delegate = self
+                    audioPlayer.play()
+                } catch{
+                    if let err = error as Error? {
+                        print("AVAudioPlayer error: \(err.localizedDescription)")
+                        audioPlayer = nil
+                    }
+                }}
         }
         else {
             audioPlayer.stop()
@@ -58,7 +79,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         } catch {
             print("Could not load sound")
         }
-  
+        
         self.view.backgroundColor = UIColor.black
         imageView.image = #imageLiteral(resourceName: "questionMark.png")
         
@@ -70,7 +91,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         self.view.bringSubview(toFront: imageView)
         self.view.bringSubview(toFront: playButton)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         managedObject.getVoices()
         self.imageView.layer.cornerRadius = imageView.frame.size.width / 2
@@ -81,35 +102,26 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         if defaults.value(forKey: "image") != nil {
             let data = defaults.object(forKey: "image") as! NSData
             imageView.image = UIImage(data: data as Data)
-           
+            
         }
         else {
             imageView.image = #imageLiteral(resourceName: "questionMark.png")
         }
-        if defaults.value(forKey: "tempIndexPath") != nil {
+        if defaults.value(forKey: "voiceRecording") == nil {
+            sound = Bundle.main.path(forResource: "trump_wall", ofType: "mp3")!
             do {
-                let i = defaults.value(forKey: "tempIndexPath") as! Int
-                let file = managedObject.voices[i].value(forKey: "voiceRecording") as! Data
-                audioPlayer = try AVAudioPlayer(data: file)
-                audioPlayer.delegate = self
-            } catch{
-                if let err = error as Error? {
-                    print("AVAudioPlayer error: \(err.localizedDescription)")
-                    audioPlayer = nil
-                }
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            }
+            catch {
+                print(error)
             }
         }
-        else {
-        sound = Bundle.main.path(forResource: "trump_wall", ofType: "mp3")!
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
-            }
-        catch {
-            print(error)
-        }
-     }
     }
-
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playButton.backgroundColor = UIColor.green
+        playButton.setTitle("Play", for: .normal)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
