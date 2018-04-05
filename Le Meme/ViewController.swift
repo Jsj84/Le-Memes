@@ -66,8 +66,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
         self.imageView.layer.cornerRadius = imageView.frame.size.width / 2
         self.imageView.clipsToBounds = true
-        self.imageView.layer.borderWidth = 2
-        self.imageView.layer.borderColor = UIColor.black.cgColor
+        self.imageView.contentMode = .scaleToFill
         
         session = AVAudioSession.sharedInstance()
         do {

@@ -51,9 +51,9 @@ class PictureController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     @objc func saveAct() {
-        let imageData:NSData = UIImageJPEGRepresentation(imageView.image!, 100)! as NSData
+        let imageData = UIImageJPEGRepresentation(tempImage, 100)!
         defaults.set(imageData, forKey: "image")
-        managedObject.save(face: imageData)
+        managedObject.save(face: imageData as Data)
         navigationController?.popToRootViewController(animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {

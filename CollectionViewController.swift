@@ -26,7 +26,7 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         if defaults.value(forKey: "loadedPicstures") == nil {
             for i in 0..<image.count{
                 if let tempImage = UIImageJPEGRepresentation(image[i], 100){
-                    managedObject.save(face: tempImage as NSData)
+                    managedObject.save(face: tempImage)
                 }
             }
             defaults.set(true, forKey: "loadedPicstures")

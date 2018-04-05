@@ -15,7 +15,7 @@ class ManagedObject: NSObject {
     var faces:[NSManagedObject] = []
     var voices:[NSManagedObject] = []
 
-    func save(face: NSData) {
+    func save(face: Data) {
         
         let entity = NSEntityDescription.entity(forEntityName: "Faces", in: getContext ())!
         let object = NSManagedObject(entity: entity, insertInto: getContext ())
