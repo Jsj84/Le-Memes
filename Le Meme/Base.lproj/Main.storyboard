@@ -18,29 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgq-T6-02G">
-                                <rect key="frame" x="16" y="471" width="343" height="152"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="152" id="u2c-cg-LrW"/>
-                                </constraints>
+                            <imageView autoresizesSubviews="NO" verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTc-zh-l4t">
+                                <rect key="frame" x="16" y="98" width="343" height="343"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgq-T6-02G">
+                                <rect key="frame" x="16" y="449" width="335" height="153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="playButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6XH-kz-lnt"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PTc-zh-l4t">
-                                <rect key="frame" x="16" y="109" width="343" height="317"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="PTc-zh-l4t" firstAttribute="leading" secondItem="mgq-T6-02G" secondAttribute="leading" id="JaZ-wC-0US"/>
-                            <constraint firstItem="PTc-zh-l4t" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="MVH-f7-gO7"/>
-                            <constraint firstItem="mgq-T6-02G" firstAttribute="bottom" secondItem="fFx-pE-Lxk" secondAttribute="bottom" id="o4f-j8-gct"/>
-                            <constraint firstItem="mgq-T6-02G" firstAttribute="top" secondItem="PTc-zh-l4t" secondAttribute="bottom" constant="45" id="udj-fQ-IYM"/>
-                            <constraint firstItem="PTc-zh-l4t" firstAttribute="top" secondItem="fFx-pE-Lxk" secondAttribute="top" constant="45" id="x0L-Te-YLx"/>
-                            <constraint firstItem="PTc-zh-l4t" firstAttribute="trailing" secondItem="mgq-T6-02G" secondAttribute="trailing" id="xia-32-U5q"/>
-                            <constraint firstItem="PTc-zh-l4t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ylY-Nd-Bl8"/>
-                        </constraints>
+                        <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                         <viewLayoutGuide key="safeArea" id="fFx-pE-Lxk"/>
                     </view>
                     <toolbarItems/>
@@ -65,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1068" y="138.0809595202399"/>
         </scene>
         <!--Audio Collection View Controller-->
         <scene sceneID="s8r-h1-klW">
@@ -76,17 +67,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h56-dC-dOb">
-                            <size key="itemSize" width="105" height="146"/>
+                            <size key="itemSize" width="105" height="157"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="cell2" id="1HC-Hq-0FH" customClass="AudioCollectionCell" customModule="Le_Meme" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="105" height="146"/>
+                                <rect key="frame" x="10" y="10" width="105" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="105" height="146"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
                             </collectionViewCell>

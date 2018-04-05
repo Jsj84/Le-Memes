@@ -58,10 +58,9 @@ class ManagedObject: NSObject {
         
         object.setValue(voice, forKey: "voiceRecording")
         object.setValue(index, forKey: "id")
-        
         do {
             try getContext ().save()
-            getVoices()
+            voices.append(object)
             print("your query has been saved")
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
@@ -82,11 +81,11 @@ class ManagedObject: NSObject {
         getContext().delete(voices[index])
         do {
             try getContext().save()
-            voices.remove(at: index)
-                getVoices()
+            self.voices.remove(at: index)
        }
     catch{print(" Sorry Jesse, had and error deleting. The error is: \(error)")}
     }
+    
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext

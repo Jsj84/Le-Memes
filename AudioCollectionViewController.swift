@@ -8,9 +8,8 @@
 
 import UIKit
 import AVFoundation
-private let reuseIdentifier = "cell2"
 
-class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDelegate {
+class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDelegate, AudioCollectionCellDelegate {
     
     let playerViewController = PlayerViewController()
     let managedObject = ManagedObject()
@@ -28,12 +27,9 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
         self.navigationItem.rightBarButtonItem = voice
         
         collectionView?.backgroundColor = UIColor.black
-        
-        // Register cell classes
-        self.collectionView!.register(AudioCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(AudioCollectionCell.self, forCellWithReuseIdentifier: "cell2")
         
         session = AVAudioSession.sharedInstance()
-        
         do {
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
             try session.setActive(true)
@@ -43,14 +39,11 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
                 AVNumberOfChannelsKey: 1,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
             ]
-        } catch {
-            
-        }
+        } catch { print("Had an issue starting the shared session Jesse") }
     }
     override func viewWillAppear(_ animated: Bool) {
-        managedObject.getVoices()
+       managedObject.getVoices()
         collectionView?.reloadData()
-        
     }
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -61,32 +54,33 @@ class AudioCollectionViewController: UICollectionViewController, AVAudioPlayerDe
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AudioCollectionCell
-        cell.deleteButton.tag = indexPath.item
-        cell.button.tag = indexPath.item
-        cell.useButton.tag = indexPath.item
-        cell.deleteButton?.addTarget(self, action: #selector(self.deleteButton), for: UIControlEvents.touchUpInside)
-        cell.button?.addTarget(self, action: #selector(self.previewButton), for: UIControlEvents.touchUpInside)
-        cell.useButton?.addTarget(self, action: #selector(self.useButton), for: UIControlEvents.touchUpInside)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! AudioCollectionCell
+        cell.delegate = self
         return cell
+    }
+    
+    func deleteButtonTapped(cell: AudioCollectionCell) {
+        guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+        managedObject.deleteVoice(index: (indexPath.item))
+        self.collectionView?.deleteItems(at: [indexPath])
+    }
+    
+    func previewButtonTapped(cell: AudioCollectionCell) {
+        guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+        preparePlayer(i: indexPath.item)
+    }
+    
+    func useButtonTapped(cell: AudioCollectionCell) {
+        guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+        defaults.set(indexPath.item, forKey: "voiceRecording")
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func gotToNextView() {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
         self.navigationController?.pushViewController(myVC, animated: true)
     }
-    @objc func previewButton(sender: UIButton) {
-        preparePlayer(i: sender.tag)
-    }
-    @objc func useButton(sender: UIButton) {
-        defaults.set(sender.tag, forKey: "voiceRecording")
-        self.navigationController?.popViewController(animated: true)
-    }
-    @objc func deleteButton(sender: UIButton) {
-        managedObject.deleteVoice(index: sender.tag)
-        self.collectionView?.reloadData()
-        self.view.reloadInputViews()
-    }
+    
     func preparePlayer(i: Int) {
         do {
             let file = managedObject.voices[i].value(forKey: "voiceRecording") as! Data

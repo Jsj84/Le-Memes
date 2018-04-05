@@ -37,9 +37,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
                 do {
                     audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
                 }
-                catch {
-                    print(error)
-                }
+                catch { print(error) }
             }
             else {
                 do {
@@ -50,7 +48,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
                     audioPlayer = try AVAudioPlayer(data: file)
                     audioPlayer.delegate = self
                     audioPlayer.play()
-                } catch{
+                } catch {
                     if let err = error as Error? {
                         print("AVAudioPlayer error: \(err.localizedDescription)")
                         audioPlayer = nil
@@ -65,8 +63,13 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        session = AVAudioSession.sharedInstance()
         
+        self.imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        self.imageView.clipsToBounds = true
+        self.imageView.layer.borderWidth = 2
+        self.imageView.layer.borderColor = UIColor.black.cgColor
+        
+        session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
             try session.setActive(true)
@@ -76,9 +79,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
                 AVNumberOfChannelsKey: 1,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
             ]
-        } catch {
-            print("Could not load sound")
-        }
+        } catch { print("Could not load sound") }
         
         self.view.backgroundColor = UIColor.black
         imageView.image = #imageLiteral(resourceName: "questionMark.png")
@@ -94,27 +95,19 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         managedObject.getVoices()
-        self.imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        self.imageView.clipsToBounds = true
-        self.imageView.layer.borderWidth = 2
-        
-        self.imageView.layer.borderColor = UIColor.black.cgColor
         if defaults.value(forKey: "image") != nil {
             let data = defaults.object(forKey: "image") as! NSData
-            imageView.image = UIImage(data: data as Data)
+           let tempImg = UIImage(data: data as Data)
+        self.imageView.image = tempImg?.resizedImageWithinRect(rectSize: CGSize(width: (tempImg?.size.width)!, height: (tempImg?.size.width)!))
             
-        }
-        else {
-            imageView.image = #imageLiteral(resourceName: "questionMark.png")
-        }
+        } else { imageView.image = #imageLiteral(resourceName: "questionMark.png") }
+        
         if defaults.value(forKey: "voiceRecording") == nil {
             sound = Bundle.main.path(forResource: "trump_wall", ofType: "mp3")!
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
             }
-            catch {
-                print(error)
-            }
+            catch { print(error) }
         }
     }
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -124,8 +117,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
-    
-    
 }

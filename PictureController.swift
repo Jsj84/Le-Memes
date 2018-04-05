@@ -44,7 +44,6 @@ class PictureController: UIViewController {
         item2.customView = save
         
         self.navigationItem.rightBarButtonItems = [item2, item1]
-        
         self.view.backgroundColor = UIColor.black
         
     }
